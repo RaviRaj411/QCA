@@ -45,19 +45,20 @@ const QuestionDetail = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    API.post("solutions/", { question: question?.id, solution: body }).then(
-      (response) => {
-        console.log(
-          "🚀 ~ file: AskQuestion.jsx ~ line 29 ~ .then ~ response",
-          response
-        );
-        setSolutions((prev) => prev.concat(response.data));
-        setMessage("Thanks for your submission.");
-        setSeverity("success");
-        setSnackBarVisibility(true);
-        setShowAddAnswer(false);
-      }
-    );
+    API.post("solutions/", {
+      question: { id: question?.id },
+      solution: body,
+    }).then((response) => {
+      console.log(
+        "🚀 ~ file: AskQuestion.jsx ~ line 29 ~ .then ~ response",
+        response
+      );
+      setSolutions((prev) => prev.concat(response.data));
+      setMessage("Thanks for your submission.");
+      setSeverity("success");
+      setSnackBarVisibility(true);
+      setShowAddAnswer(false);
+    });
     // .catch((error) => {
     //   // console.log(
     //   //   "🚀 ~ file: AskQuestion.jsx ~ line 32 ~ handleSubmit ~ error",

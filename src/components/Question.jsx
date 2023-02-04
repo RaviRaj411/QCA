@@ -82,16 +82,18 @@ const Question = ({ question, loading }) => {
   };
 
   const handleBookmark = () => {
-    API.post("bookmarks/", { question: question?.id }).then((response) => {
-      console.log(
-        "🚀 ~ file: Solution.jsx ~ line 107 ~ voteSolution ~ response",
-        response
-      );
-      setBookmark(response.status == 201 ? true : false);
-      // API.get(`bookmarks/${question.id}/`)
-      //   .then((response) => setBookmark(response.data.bookmark))
-      //   .catch((error) => console.log(error));
-    });
+    API.post(`bookmarks/`, { question: { id: question?.id } }).then(
+      (response) => {
+        console.log(
+          "🚀 ~ file: Solution.jsx ~ line 107 ~ voteSolution ~ response",
+          response
+        );
+        setBookmark(response.status == 204 ? false : true);
+        // API.get(`bookmarks/${question.id}/`)
+        //   .then((response) => setBookmark(response.data.bookmark))
+        //   .catch((error) => console.log(error));
+      }
+    );
     // .catch((error) => {
     //   console.log(
     //     "🚀 ~ file: Solution.jsx ~ line 110 ~ voteSolution ~ error",

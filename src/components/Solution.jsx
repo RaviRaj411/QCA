@@ -159,7 +159,7 @@ const Solution = ({ sol, handleDelete, loading }) => {
     setViewComments((prev) => !prev);
     setFetching(true);
     if (!viewComments) {
-      API.get(`comments/?solution=${solution.id}`).then((res) => {
+      API.get(`problem/solutions/comments/${solution.id}`).then((res) => {
         setComments(res.data);
         // console.log(comments);
         setFetching(false);
@@ -172,20 +172,21 @@ const Solution = ({ sol, handleDelete, loading }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    API.post("comments/", { solution: solution.id, comment: commentText }).then(
-      (response) => {
-        // console.log(
-        //   "🚀 ~ file: Solution.jsx ~ line 89 ~ addComment ~ response",
-        //   response
-        // );
-        setComments((prev) => [response.data].concat(prev));
-        setCommentText("");
-        setMessage("Thanks for your comment.");
-        setSeverity("success");
-        setSnackBarVisibility(true);
-        setFetching(false);
-      }
-    );
+    API.post("problem/solutions/comments/", {
+      solution: { id: solution.id },
+      comment: commentText,
+    }).then((response) => {
+      // console.log(
+      //   "🚀 ~ file: Solution.jsx ~ line 89 ~ addComment ~ response",
+      //   response
+      // );
+      setComments((prev) => [response.data].concat(prev));
+      setCommentText("");
+      setMessage("Thanks for your comment.");
+      setSeverity("success");
+      setSnackBarVisibility(true);
+      setFetching(false);
+    });
     // .catch((error) => {
     //   console.log(
     //     "🚀 ~ file: Solution.jsx ~ line 97 ~ handleSubmit ~ error",

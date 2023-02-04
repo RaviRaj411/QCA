@@ -109,10 +109,7 @@ const QuestionPreview = ({ question, loading }) => {
               </Typography>
             ) : (
               <div className="ck-content" style={{ wordBreak: "break-all" }}>
-                {
-                  /* parse(question.body) */
-                  question.body
-                }
+                {parse(question.body)}
               </div>
             )}
           </CardContent>

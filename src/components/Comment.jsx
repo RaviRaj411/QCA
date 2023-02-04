@@ -41,9 +41,9 @@ const Comment = ({ parent, comment, loading, handleDelete }) => {
     React.useContext(MessageContext);
 
   const handleSubmit = async () => {
-    API.post("comments/", {
-      solution: comment.solution,
-      parent: comment.id,
+    API.post("problem/solutions/comments/", {
+      solution: { id: comment.solution.id },
+      parent: { id: comment.id },
       comment: replyText,
     }).then((response) => {
       // console.log(
