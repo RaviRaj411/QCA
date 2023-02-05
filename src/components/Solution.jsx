@@ -88,12 +88,13 @@ const Solution = ({ sol, handleDelete, loading }) => {
 
   React.useEffect(() => {
     if (solution && user) {
-      API.get(`votes/${solution.id}/`).then((response) => {
-        setVote(response.data.vote);
-      });
-      // .catch((error) => {
-      //   // console.log(error)
-      // });
+      API.get(`votes/${solution.id}/`)
+        .then((response) => {
+          setVote(response.data.vote_type);
+        })
+        .catch((error) => {
+          // console.log(error)
+        });
     }
   }, [user]);
 
@@ -131,16 +132,17 @@ const Solution = ({ sol, handleDelete, loading }) => {
   };
 
   const handleVote = (vote) => {
-    API.post("votes/", { solution: solution.id, vote: vote }).then(
+    API.post("votes/", { solution: { id: solution.id }, vote_type: vote }).then(
       (response) => {
         // console.log(
         //   "🚀 ~ file: Solution.jsx ~ line 107 ~ voteSolution ~ response",
         //   response
         // );
-        setVote(response.data.vote);
-        API.get(`solutions/${solution.id}`)
-          .then((response) => setSolution(response.data))
-          .catch((error) => console.log(error));
+        setVote(response.data.vote_type);
+        setSolution(response.data.solution);
+        // API.get(`solutions/${solution.id}`)
+        //   .then((response) => setSolution(response.data))
+        //   .catch((error) => console.log(error));
         setMessage("Thanks for your vote.");
         setSeverity("success");
         setSnackBarVisibility(true);
