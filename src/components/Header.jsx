@@ -35,7 +35,7 @@ const Header = () => {
           color={"text.secondary"}
           paragraph
         >
-          EngiZone is a platform where you can post your question and get best
+          QCA is a platform where you can post your question and get best
           answer instantly. We want to connect peple who wants to share their
           knowledge in effective way to the people who need it.
         </Typography>
