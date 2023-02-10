@@ -22,7 +22,7 @@ function Copyright() {
     <Typography variant="body2" align="center" color="text.secondary">
       {"Copyright © "}
       <Link component={RouterLink} color="inherit" to="/">
-        EngiZone
+        Queries in computer Applications
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -63,7 +63,7 @@ const Footer = () => {
                 align="center"
                 gutterBottom
               >
-                EngiZone
+                QCA
               </Typography>
               <Container maxWidth="sm">
                 <Typography variant="body1">
