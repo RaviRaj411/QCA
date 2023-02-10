@@ -123,7 +123,7 @@ const NavBar = () => {
         <Box>
           <Link component={RouterLink} sx={{ textDecoration: "none" }} to="/">
             <Typography variant="h5" color={"white"}>
-              EngiZone
+              QCA
             </Typography>
           </Link>
         </Box>
